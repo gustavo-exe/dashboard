@@ -1,5 +1,7 @@
+import { AppService } from './app.service';
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { CardData } from './app.types';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,27 +21,9 @@ export class AppComponent {
     }]
   };
 
-  cards = [
-    {
-      title: 'Total invoiced',
-      icon: '',
-      value: 88817.30
-    },
-    {
-      title: 'Average invoice',
-      icon: '',
-      value: 9868.59
-    },
-    {
-      title: 'Total orders',
-      icon: '',
-      value: 9
-    },
-    {
-      title: 'Total customers',
-      icon: '',
-      value: 10
-    },
+  cards:CardData[] = [];
 
-  ]
+  constructor(private appServide: AppService){
+      this.cards = appServide.cardsData;
+  }
 }
